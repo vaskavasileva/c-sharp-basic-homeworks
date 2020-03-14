@@ -17,11 +17,15 @@ namespace Homework3
                 Console.WriteLine("Do you want to enter another name? (y/n)");
                 var input = Console.ReadLine();
                 answer = Convert.ToChar(input);
+                i++;
 
             } while (answer == 'y');
 
 
-            
+            foreach (var name in names)
+            {
+                Console.WriteLine(name);
+            }
         }
     }
 }

@@ -16,7 +16,7 @@ namespace LotteryApp.Entities
             
         }
         public int[] Combination { get; set; }
-        public User User { get; set; }
+        public User User { get; set; } = new User();
         public Price Price { get; set; } 
 
        

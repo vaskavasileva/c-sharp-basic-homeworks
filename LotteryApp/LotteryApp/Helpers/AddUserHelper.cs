@@ -39,8 +39,18 @@ namespace LotteryApp.Helpers
                     int.TryParse(input, out int number);
                     if (number >= 1 && number <= 36)
                     {
-                        ticket.Combination[i] = number;
-                        break;
+                    if (Array.IndexOf(ticket.Combination, number) != -1)
+                    {
+                        while (Array.IndexOf(ticket.Combination, number) != -1)
+                        {
+                            Console.WriteLine("You entered the same number twice, please enter another number!");
+                            input = Console.ReadLine();
+                            int.TryParse(input, out number);
+                        }
+
+                    }
+                    ticket.Combination[i] = number;
+                        continue;
                     }
 
                     Console.WriteLine("Please enter a valid number!");

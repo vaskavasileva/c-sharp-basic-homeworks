@@ -118,45 +118,48 @@ namespace LotteryApp
                 User = user10
             };
             Session.AddToArrayTickets(ticket10);
-
-
-            Console.WriteLine("Do you want to add a new user(1) or start the session(2)? ");
-            var input = Console.ReadLine();
-            while (true)
+            int answer = 0;
+            while (answer != 2)
             {
-                if (input == "1" || input == "2")
+                Console.WriteLine("Do you want to add a new user(1) or start the session(2)? ");
+                var input = Console.ReadLine();
+                while (true)
                 {
-                    break;
-                }
-                Console.WriteLine("You need to enter 1(new user) or 2(start session).");
-                input = Console.ReadLine();
-
-            }
-
-            int.TryParse(input, out int answer);
-
-            switch (answer)
-            {
-                case 1:
-                    AddUserHelper.AddNewTicket();
-                    break;
-
-                case 2:
+                    if (input == "1" || input == "2")
                     {
-                        Session firstSession = new Session();
-                        firstSession.StartSession();
-                        firstSession.PrintWinningCombination();
-                        Console.WriteLine("All users participating in the session are: ");
-                        Session.Print();
-
-                        SortingHelper.SortTickets(firstSession);
-                        WinnersAnnouncement.AnnounceWinners(firstSession);
-
-                        FirstSession.GetFirstSessionWinner(firstSession);
-                        SecondSession.GetSecondSessionWinner(firstSession);
+                        break;
                     }
-                    break;
+                    Console.WriteLine("You need to enter 1(new user) or 2(start session).");
+                    input = Console.ReadLine();
+
+                }
+
+                int.TryParse(input, out answer);
+
+                switch (answer)
+                {
+                    case 1:
+                        AddUserHelper.AddNewTicket();
+                        break;
+
+                    case 2:
+                        {
+                            Session firstSession = new Session();
+                            firstSession.StartSession();
+                            firstSession.PrintWinningCombination();
+                            Console.WriteLine("All users participating in the session are: ");
+                            Session.Print();
+
+                            SortingHelper.SortTickets(firstSession);
+                            WinnersAnnouncement.AnnounceWinners(firstSession);
+
+                            FirstSession.GetFirstSessionWinner(firstSession);
+                            SecondSession.GetSecondSessionWinner(firstSession);
+                        }
+                        break;
+                }
             }
+            
 
             Console.ReadLine();
         }

@@ -40,14 +40,12 @@ namespace LotteryApp
             user10.SetAge(29);
 
 
-            var allTickets = new Ticket[0];
-
             Ticket ticket1 = new Ticket()
             {
                 Combination = new int[] { 11, 23, 5, 34, 3, 16, 7 },
                 User = user1
             };
-            ticket1.AddToArrayTickets(ticket1);
+            Session.AddToArrayTickets(ticket1);
 
 
             Ticket ticket2 = new Ticket()
@@ -55,77 +53,110 @@ namespace LotteryApp
                 Combination = new int[] { 18, 6, 32, 4, 27, 9, 23 },
                 User = user2
             };
-            ticket2.AddToArrayTickets(ticket2);
+            Session.AddToArrayTickets(ticket2);
+
 
             Ticket ticket3 = new Ticket()
             {
                 Combination = new int[] { 5, 14, 16, 8, 25, 29, 24 },
                 User = user3
             };
-            ticket3.AddToArrayTickets(ticket3);
+            Session.AddToArrayTickets(ticket3);
+
 
             Ticket ticket4 = new Ticket()
             {
                 Combination = new int[] { 4, 28, 17, 19, 25, 6, 3 },
                 User = user4
             };
-            ticket4.AddToArrayTickets(ticket4);
+            Session.AddToArrayTickets(ticket4);
+
 
             Ticket ticket5 = new Ticket()
             {
                 Combination = new int[] { 1, 15, 24, 25, 26, 36, 31 },
                 User = user5
             };
-            ticket5.AddToArrayTickets(ticket5);
+            Session.AddToArrayTickets(ticket5);
+
 
             Ticket ticket6 = new Ticket()
             {
                 Combination = new int[] { 2, 8, 9, 15, 28, 34, 1 },
                 User = user6
             };
-            ticket6.AddToArrayTickets(ticket6);
+            Session.AddToArrayTickets(ticket6);
+
 
             Ticket ticket7 = new Ticket()
             {
                 Combination = new int[] { 5, 4, 19, 18, 6, 32, 2 },
                 User = user7
             };
-            ticket7.AddToArrayTickets(ticket7);
+            Session.AddToArrayTickets(ticket7);
+
 
             Ticket ticket8 = new Ticket()
             {
                 Combination = new int[] { 9, 12, 18, 25, 26, 35, 4 },
                 User = user8
             };
-            ticket8.AddToArrayTickets(ticket8);
+            Session.AddToArrayTickets(ticket8);
+
 
             Ticket ticket9 = new Ticket()
             {
                 Combination = new int[] { 15, 18, 21, 25, 28, 31, 34 },
                 User = user9
             };
-            ticket9.AddToArrayTickets(ticket9);
+            Session.AddToArrayTickets(ticket9);
+
 
             Ticket ticket10 = new Ticket()
             {
                 Combination = new int[] { 3, 19, 35, 2, 7, 14, 6 },
                 User = user10
             };
-            ticket10.AddToArrayTickets(ticket10);
+            Session.AddToArrayTickets(ticket10);
 
-            
 
-            Session firstSession = new Session()
+            Console.WriteLine("Do you want to add a new user(1) or start the session(2)? ");
+            var input = Console.ReadLine();
+            while (true)
             {
-                Tickets = new Ticket[] {}
-            };
+                if (input == "1" || input == "2")
+                {
+                    break;
+                }
+                Console.WriteLine("You need to enter 1(new user) or 2(start session).");
+                input = Console.ReadLine();
 
-            firstSession.StartSession();
-            firstSession.SortTickets(firstSession);
-            Session.AnnounceWinners(firstSession);
-            FirstSession.GetFirstSessionWinner(firstSession);
-            SecondSession.GetSecondSessionWinner(firstSession);
+            }
 
+            int.TryParse(input, out int answer);
+
+            switch (answer)
+            {
+                case 1:
+                    AddUserHelper.AddNewTicket();
+                    break;
+
+                case 2:
+                    {
+                        Session firstSession = new Session();
+                        firstSession.StartSession();
+                        firstSession.PrintWinningCombination();
+                        Console.WriteLine("All users participating in the session are: ");
+                        Session.Print();
+
+                        SortingHelper.SortTickets(firstSession);
+                        WinnersAnnouncement.AnnounceWinners(firstSession);
+
+                        FirstSession.GetFirstSessionWinner(firstSession);
+                        SecondSession.GetSecondSessionWinner(firstSession);
+                    }
+                    break;
+            }
 
             Console.ReadLine();
         }

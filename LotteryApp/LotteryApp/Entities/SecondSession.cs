@@ -9,18 +9,14 @@ namespace LotteryApp.Entities
         public static Ticket secondSessionWinner { get; set; }
         public static void GetSecondSessionWinner(Session session)
         {
-            if (TicketWithTwoWins.Length != 0)
+            if (TicketsWithTwoMatches.Length != 0)
             {
-                var winnerIndex = new Random().Next(0, TicketWithTwoWins.Length - 1);
-                secondSessionWinner = TicketWithTwoWins[winnerIndex];
+                var winnerIndex = new Random().Next(0, TicketsWithTwoMatches.Length - 1);
+                secondSessionWinner = TicketsWithTwoMatches[winnerIndex];
                 Console.WriteLine("The winner of the second session is " + secondSessionWinner.User.Name + ", who won a Vacation!");
             }
-
-            else
-            {
-                Console.WriteLine("No user had 2 wins, so no user gets the price Vacation!");
-            }
             
+           
         }
     }
 }

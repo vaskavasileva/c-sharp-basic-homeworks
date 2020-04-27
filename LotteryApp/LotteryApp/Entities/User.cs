@@ -18,7 +18,7 @@ namespace LotteryApp.Entities
         public  string Name { get; set; }
         private int Age { get; set; }
 
-        public void BuyTicket()
+        public static void BuyTicket()
         {
             Console.WriteLine("You got a new ticket");
         }

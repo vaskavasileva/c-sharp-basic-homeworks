@@ -8,9 +8,12 @@ namespace LotteryApp.Helpers
     {
         public static int CheckTicket(int[]winnigCombination, int[]ticketNumbers)
         {
-            var counter = 0;
+            int counter = 0;
+
             foreach (var number in ticketNumbers)
             {
+                
+
                 foreach (var num in winnigCombination)
                 {
                     if (number == num)
@@ -18,7 +21,7 @@ namespace LotteryApp.Helpers
                         counter++;
                     }
                 }
-
+                
             }
             return counter;
         }

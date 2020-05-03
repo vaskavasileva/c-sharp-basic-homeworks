@@ -131,11 +131,11 @@ namespace HabitTracker.Helpers
                     continue;
                 }
                 user.DateOfBirth = dateOfBirth;
+                User.SetAge(user);
                 break;
             }
 
-            Array.Resize(ref User.AllUsers, User.AllUsers.Length + 1);
-            User.AllUsers[User.AllUsers.Length - 1] = user;
+            User.AllUsers.Add(user);
             Console.WriteLine("You have succesfully created a user!");
         
 
@@ -143,238 +143,16 @@ namespace HabitTracker.Helpers
 
             //set good habit
             var goodHabit = new Habit();
-            user.GoodHabits[0] = goodHabit;
+            user.GoodHabits.Add(goodHabit);
             Console.WriteLine("Please set a good habit.");
-            Console.Write("Enter the title of that habit: ");
-            goodHabit.Title = Console.ReadLine();
-            Console.WriteLine("Please choose a group to which your habit belongs from the following, and enter the number next to it: ");
-            while (true)
-            {
-                int number = 1;
-                foreach (var group in Enum.GetNames(typeof(Group)))
-                {
-                    Console.Write(group + ", " + number);
-                    number++;
-
-                }
-                var input = Console.ReadLine();
-                int.TryParse(input, out int answer);
-                if (answer! > 0 && answer! <= 6)
-                {
-                    Console.WriteLine("You need to enter a valid group number!");
-                    continue;
-                }
-
-                switch (answer)
-                {
-                    case 1:
-                        {
-                            goodHabit.Group = Group.ExerciseAndSports;
-                        }
-                        break;
-                    case 2:
-                        {
-                            goodHabit.Group = Group.StudyAndLearning;
-                        }
-                        break;
-                    case 3:
-                        {
-                            goodHabit.Group = Group.ActivitiesAndHobbies;
-                        }
-                        break;
-                    case 4:
-                        {
-                            goodHabit.Group = Group.WorkAndCareer;
-                        }
-                        break;
-                    case 5:
-                        {
-                            goodHabit.Group = Group.HomeAndPersonal;
-                        }
-                        break;
-                    case 6:
-                        {
-                            goodHabit.Group = Group.Other;
-                        }
-                        break;
-
-                }
-                break;
-            }
-            
-
-            Console.WriteLine("Please add a difficulty for your habit by choosing the number next to the difficulty: ");
-            while (true)
-            {
-                var number = 1;
-                foreach (var difficulty in Enum.GetNames(typeof(Difficulty)))
-                {
-                    Console.WriteLine(difficulty);
-                    Console.WriteLine(number);
-                    number++;
-                }
-                var input = Console.ReadLine();
-                int.TryParse(input, out int answer);
-                if (answer! > 0 && answer! <= 3)
-                {
-                    Console.WriteLine("You need to enter a valid difficulty number!");
-                    continue;
-                }
-                switch (answer)
-                {
-                    case 1:
-                        {
-                            goodHabit.Difficulty = Difficulty.Low;
-                        }
-                        break;
-                    case 2:
-                        {
-                            goodHabit.Difficulty = Difficulty.Medium;
-                        }
-                        break;
-                    case 3:
-                        {
-                            goodHabit.Difficulty = Difficulty.Hard;
-                        }
-                        break;
-                }
-                break;
-            }
+            HabitsHelper.SetHabit(goodHabit);
 
             //set bad habit
             var badHabit = new Habit();
-            user.BadHabits[0] = badHabit;
+            user.BadHabits.Add(badHabit);
             Console.WriteLine("Please set a bad habit.");
-            Console.Write("Enter the title of that habit: ");
-            badHabit.Title = Console.ReadLine();
-            Console.WriteLine("Please choose a group to which your habit belongs from the following, and enter the number next to it: ");
-            while (true)
-            {
-                int number = 1;
-                foreach (var group in Enum.GetNames(typeof(Group)))
-                {
-                    Console.Write(group + ", " + number);
-                    number++;
-
-                }
-                var input = Console.ReadLine();
-                int.TryParse(input, out int answer);
-                if (answer! > 0 && answer! <= 6)
-                {
-                    Console.WriteLine("You need to enter a valid group number!");
-                    continue;
-                }
-
-                switch (answer)
-                {
-                    case 1:
-                        {
-                            badHabit.Group = Group.ExerciseAndSports;
-                        }
-                        break;
-                    case 2:
-                        {
-                            badHabit.Group = Group.StudyAndLearning;
-                        }
-                        break;
-                    case 3:
-                        {
-                            badHabit.Group = Group.ActivitiesAndHobbies;
-                        }
-                        break;
-                    case 4:
-                        {
-                            badHabit.Group = Group.WorkAndCareer;
-                        }
-                        break;
-                    case 5:
-                        {
-                            badHabit.Group = Group.HomeAndPersonal;
-                        }
-                        break;
-                    case 6:
-                        {
-                            badHabit.Group = Group.Other;
-                        }
-                        break;
-
-                }
-                break;
-            }
-
-
-            Console.WriteLine("Please add a difficulty for your habit by choosing the number next to the difficulty: ");
-            while (true)
-            {
-                var number = 1;
-                foreach (var difficulty in Enum.GetNames(typeof(Difficulty)))
-                {
-                    Console.WriteLine(difficulty);
-                    Console.WriteLine(number);
-                    number++;
-                }
-                var input = Console.ReadLine();
-                int.TryParse(input, out int answer);
-                if (answer! > 0 && answer! <= 3)
-                {
-                    Console.WriteLine("You need to enter a valid difficulty number!");
-                    continue;
-                }
-                switch (answer)
-                {
-                    case 1:
-                        {
-                            badHabit.Difficulty = Difficulty.Low;
-                        }
-                        break;
-                    case 2:
-                        {
-                            badHabit.Difficulty = Difficulty.Medium;
-                        }
-                        break;
-                    case 3:
-                        {
-                            badHabit.Difficulty = Difficulty.Hard;
-                        }
-                        break;
-                }
-                break;
-            }
-
-            while (true)
-            {
-                Console.WriteLine("If you want to enter another habit press 1, if you want to login to your account press 2, and if you want to exit the application press 3. ");
-                var input = Console.ReadLine();
-                int.TryParse(input, out int answer);
-                if (answer < 1 && answer > 3)
-                {
-                    Console.WriteLine("You need to enter a valid option!");
-                    continue;
-                }
-
-                switch (answer)
-                {
-                    case 1:
-                        {
-                            //add habit
-                            
-                        }
-                        break;
-
-                    case 2:
-                        {
-                            //login
-                        }
-                        break;
-
-                    case 3:
-                        break;
-                }
-                break;
-            }
+            HabitsHelper.SetHabit(badHabit);
             
-
-
         }
     }
 }

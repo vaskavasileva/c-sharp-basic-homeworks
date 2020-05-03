@@ -12,8 +12,14 @@ namespace HabitTracker.Entities
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
         private int Age { get; set; }
-        public Habit[] GoodHabits = new Habit[0];
-        public Habit[] BadHabits = new Habit[0];
-        public static User[] AllUsers = new User[0];
+        public List<Habit> GoodHabits { get; set; } = new List<Habit>();
+        public List<Habit> BadHabits { get; set; } = new List<Habit>();
+        public static List<User> AllUsers { get; set; } = new List<User>();
+
+        public static void SetAge(User user)
+        {
+            var thisTime = DateTime.Today;
+            user.Age = user.DateOfBirth.Year - thisTime.Year;
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace HabitTracker.Entities
         public Group Group { get; set; }
         public Difficulty Difficulty { get; set; }
         public HabitType Type { get; set; }
+        public Dictionary<DateTime, bool> DailyLog { get; set; } = new Dictionary<DateTime, bool>();
 
-        
     }
 }

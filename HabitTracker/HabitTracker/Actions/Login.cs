@@ -5,7 +5,7 @@ using HabitTracker.Entities;
 
 namespace HabitTracker.Helpers
 {
-    public class LoginHelper
+    public class Login
     {
         public static User LoginUser()
         {

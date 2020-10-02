@@ -6,7 +6,7 @@ using HabitTracker.Enums;
 
 namespace HabitTracker.Helpers
 {
-    public class HabitsHelper
+    public class HabitsAdder
     {
         public static Habit SetHabit(Habit habit)
         {

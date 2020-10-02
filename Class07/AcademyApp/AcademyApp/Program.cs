@@ -11,13 +11,17 @@ namespace AcademyApp
     {
         static void Main(string[] args)
         {
-            Participant participant1 = new Participant();
-            participant1.FirstName = "Miodrag";
-            participant1.LastName = "Cekikj";
-            participant1.DateOfBirth = new DateTime(1989, 5, 15);
-            participant1.Role = AcademyRole.Trainer;
+            var assistant = new Assistant();
 
-            participant1.Subjects = new Subject[]
+            var student = new Student();
+
+
+            Trainer trainer = new Trainer();
+            trainer.FirstName = "Miodrag";
+            trainer.LastName = "Cekikj";
+            trainer.DateOfBirth = new DateTime(1989, 5, 15);
+
+            trainer.Subjects = new Subject[]
             {
                 new Subject()
                 {
@@ -25,7 +29,7 @@ namespace AcademyApp
                     Semester = 2,
                     Tools = new Tooling()
                     {
-                        MainIDE = "Visual Studio",
+                        MainIDE = "Visual Studio 2019",
                         AlternativeIDE = "Visual Studio Code"
                     }
                 },
@@ -35,49 +39,24 @@ namespace AcademyApp
                     Semester = 2,
                     Tools = new Tooling()
                     {
-                        MainIDE = "Visual Studio",
+                        MainIDE = "Visual Studio 2019",
                         AlternativeIDE = "Visual Studio Code"
                     }
+                
                 }
             };
 
-            participant1.Greetings();
+            trainer.Greetings();
 
             var participant2 = new Participant();
             participant2.FirstName = "Goce";
             participant2.LastName = "Kabov";
             participant2.DateOfBirth = new DateTime(1992, 5, 15);
             participant2.Role = AcademyRole.Assistant;
-            participant2.Subjects = new Subject[]
-            {
-                new Subject()
-                {
-                    Title = "HTML",
-                    Semester = 1,
-                    Tools = new Tooling()
-                    {
-                        MainIDE = "Notepad",
-                        AlternativeIDE = "Sublime Text"
-                    }
-                }
-            };
             participant2.Greetings();
 
             var participant3 = new Participant("Bob", "Marley");
             participant3.Role = AcademyRole.Assistant;
-            participant3.Subjects = new Subject[]
-            {
-                new Subject()
-                {
-                    Title = "CSS",
-                    Semester = 1,
-                    Tools = new Tooling()
-                    {
-                        MainIDE = "Notepad",
-                        AlternativeIDE = "Sublime Text"
-                    }
-                }
-            };
             Console.ForegroundColor = ConsoleColor.Yellow;
             participant3.PrintFullName();
 
@@ -86,18 +65,7 @@ namespace AcademyApp
                 FirstName = "Tupac",
                 LastName = "Shakur"
             };
-            participant4.Subjects = new Subject[]
-            {
-                new Subject()
-                {
-                    Title = "Java Script",
-                    Semester = 1,
-                    Tools = new Tooling()
-                    {
-                        MainIDE = "HTMLPad"
-                    }
-                }
-            };
+            
 
             var cSharpBasic = new Subject();
             cSharpBasic.Title = "C# Basic";

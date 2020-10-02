@@ -23,11 +23,11 @@ namespace AcademyApp.Entities
             LastName = lastName;
         }
 
-        private int Age;
+        private int Age { get; set; }
 
-        public string FirstName;
-        public string LastName;
-        public DateTime DateOfBirth;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
         public Subject[] Subjects;
 

@@ -6,7 +6,7 @@ using HabitTracker.Enums;
 
 namespace HabitTracker.Helpers
 {
-    public class RegisterHelper
+    public class Register
     {
         public static void RegisterNewUser()
         {
@@ -145,13 +145,13 @@ namespace HabitTracker.Helpers
             var goodHabit = new Habit();
             user.GoodHabits.Add(goodHabit);
             Console.WriteLine("Please set a good habit.");
-            HabitsHelper.SetHabit(goodHabit);
+            HabitsAdder.SetHabit(goodHabit);
 
             //set bad habit
             var badHabit = new Habit();
             user.BadHabits.Add(badHabit);
             Console.WriteLine("Please set a bad habit.");
-            HabitsHelper.SetHabit(badHabit);
+            HabitsAdder.SetHabit(badHabit);
             
         }
     }

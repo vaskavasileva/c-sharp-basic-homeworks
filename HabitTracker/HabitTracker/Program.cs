@@ -16,18 +16,18 @@ namespace HabitTracker
             {
                 case 1:
                     //login
-                    var loggedUser = LoginHelper.LoginUser();
+                    var loggedUser = Login.LoginUser();
                     if (loggedUser == null)
                     {
                         break;
                     }
-                    LoggedInHelper.LoggedIn(loggedUser);
+                    LoggedIn.LoggedIn(loggedUser);
 
                     break;
 
                 case 2:
                     //register
-                    RegisterHelper.RegisterNewUser();
+                    Register.RegisterNewUser();
                     Console.WriteLine("Do you want to add another habit(1), log into your account(2) or exit the application(3)?");
                     var input1 = Console.ReadLine();
                     int answer1 = CheckInputHelper.CheckThreePossibilities(input1);
@@ -46,7 +46,7 @@ namespace HabitTracker
                                 
                                 lastUser.GoodHabits.Add(goodHabit);
                                 Console.WriteLine("Please set a good habit.");
-                                HabitsHelper.SetHabit(goodHabit);
+                                HabitsAdder.SetHabit(goodHabit);
                             }
                             else if (answer2 == 2)
                             {
@@ -54,18 +54,18 @@ namespace HabitTracker
 
                                 lastUser.BadHabits.Add(badHabit);
                                 Console.WriteLine("Please set a bad habit.");
-                                HabitsHelper.SetHabit(badHabit);
+                                HabitsAdder.SetHabit(badHabit);
                             }
                             break;
 
                         //login
                         case 2:
-                            var loggedUser1 = LoginHelper.LoginUser();
+                            var loggedUser1 = Login.LoginUser();
                             if (loggedUser1 == null)
                             {
                                 break;
                             }
-                            LoggedInHelper.LoggedIn(loggedUser1);
+                            LoggedIn.LoggedIn(loggedUser1);
                             break;
 
                         //exit application
